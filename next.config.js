@@ -9,4 +9,4 @@ const nextConfig = {
   // Adicione outras configurações do Next.js aqui, se necessário
 }
 
-module.exports = nextConfig
+export default nextConfig
