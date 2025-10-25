@@ -1,0 +1,29 @@
+<h2 class="section-title"><i class="fas fa-briefcase" style="color:#003602"></i> Vagas</h2>
+<form class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-4" method="get">
+  <input class="border p-2 rounded" name="q" placeholder="Buscar" value="<%= (filters&&filters.q)||'' %>">
+  <input class="border p-2 rounded" name="city" placeholder="Cidade" value="<%= (filters&&filters.city)||'' %>">
+  <select class="border p-2 rounded" name="type"><option value="">Tipo</option><option <%= (filters&&filters.type)==='CLT'?'selected':'' %>>CLT</option><option <%= (filters&&filters.type)==='PJ'?'selected':'' %>>PJ</option><option <%= (filters&&filters.type)==='Estágio'?'selected':'' %>>Estágio</option></select>
+  <button class="btn btn-primary w-max">Filtrar</button>
+</form>
+<div class="card-grid">
+  <% jobs.forEach(function(j){ %>
+  <div class="card">
+    <div class="card-image" style="background-color:#e0f2fe">
+      <div class="card-badge"><%= j.type||'--' %></div>
+      <i class="fas fa-user-tie text-3xl" style="color:#0369a1;"></i>
+    </div>
+    <div class="card-content">
+      <h3 class="card-title"><%= j.title %></h3>
+      <div class="card-meta">
+        <span><i class="fas fa-building mr-1"></i> <%= j.company||'' %></span>
+        <span><i class="fas fa-map-marker-alt mr-1"></i> <%= j.city||'' %></span>
+      </div>
+      <p class="card-description"><%= j.description||'' %></p>
+      <div class="card-footer">
+        <div class="card-price"><%= j.salary||'A combinar' %></div>
+        <div class="card-actions"><a class="btn btn-primary" href="/vagas/<%= j.id %>">Ver Detalhes</a></div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>

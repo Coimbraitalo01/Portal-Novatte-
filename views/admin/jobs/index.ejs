@@ -1,0 +1,10 @@
+<h2 class="section-title"><i class="fas fa-briefcase" style="color:#003602"></i> Admin - Vagas</h2>
+<a class="btn btn-primary mb-3 inline-block" href="/admin/vagas/novo">Nova Vaga</a>
+<table class="w-full text-sm border">
+  <thead class="bg-gray-100"><tr><th class="p-2 text-left">Título</th><th class="p-2">Empresa</th><th class="p-2">Tipo</th><th class="p-2">Ações</th></tr></thead>
+  <tbody>
+  <% jobs.forEach(function(j){ %>
+    <tr class="border-t"><td class="p-2"><%= j.title %></td><td class="p-2"><%= j.company||'-' %></td><td class="p-2"><%= j.type||'-' %></td><td class="p-2"><a class="text-blue-600" href="/admin/vagas/<%= j.id %>/editar">Editar</a></td></tr>
+  <% }) %>
+  </tbody>
+</table>

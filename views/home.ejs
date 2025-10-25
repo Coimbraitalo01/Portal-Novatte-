@@ -1,0 +1,150 @@
+<div class="ad-main">
+  <div class="ad-label">PUBLICIDADE</div>
+  <div class="ad-slide active" style="background:linear-gradient(135deg,#003602,#86450A)">
+    <div>
+      <div><i class="fas fa-building text-xl mb-1"></i></div>
+      <div class="text-base">Construtora XPTO</div>
+      <div class="ad-text">Loteamentos com ótima localização</div>
+    </div>
+  </div>
+  <div class="ad-slide" style="background:linear-gradient(135deg,#FE4700,#86450A)">
+    <div>
+      <div><i class="fas fa-store text-xl mb-1"></i></div>
+      <div class="text-base">Mercado Central</div>
+      <div class="ad-text">Entregas gratuitas para a região</div>
+    </div>
+  </div>
+  <div class="ad-slide" style="background:linear-gradient(135deg,#003602,#FE4700)">
+    <div>
+      <div><i class="fas fa-tools text-xl mb-1"></i></div>
+      <div class="text-base">Reformas Rápidas</div>
+      <div class="ad-text">Pintura, elétrica e hidráulica com orçamento grátis</div>
+    </div>
+  </div>
+  <div class="ad-controls"><div class="ad-dot active" data-index="0"></div><div class="ad-dot" data-index="1"></div><div class="ad-dot" data-index="2"></div></div>
+</div>
+<div class="portal-tabs"><div class="portal-tab portal-icon active" data-tab="portal" title="Portal Inicial"><svg class="logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 28L32 12L56 28V48C56 54 50 60 44 60H20C14 60 8 54 8 48V28Z" fill="#FE4700"/></svg><span class="hidden md:inline">Início</span></div><a class="portal-tab" data-tab="properties" href="/imoveis"><i class="fas fa-home"></i><span>Imóveis</span></a><div class="portal-tab" data-tab="jobs"><i class="fas fa-briefcase"></i><span>Vagas</span></div><div class="portal-tab" data-tab="events"><i class="fas fa-calendar-alt"></i><span>Eventos</span></div><div class="portal-tab" data-tab="services"><i class="fas fa-concierge-bell"></i><span>Serviços</span></div><div class="portal-tab" data-tab="companies"><i class="fas fa-building"></i><span>Empresas</span></div></div>
+<div class="highlights-carousel"><div class="highlight-slide active" style="background:linear-gradient(135deg,rgba(0,54,2,.9),rgba(0,54,2,.8))"><div class="highlight-content"><span class="highlight-badge">IMÓVEIS</span><h2 class="highlight-title">Casa com Piscina no Centro</h2><p class="highlight-description">Excelente oportunidade! Casa com 4 quartos e área de lazer completa.</p><a href="/imoveis" class="btn btn-primary">Ver Detalhes</a></div></div><div class="highlight-slide" style="background:linear-gradient(135deg,rgba(254,71,0,.9),rgba(224,62,0,.8))"><div class="highlight-content"><span class="highlight-badge">VAGAS</span><h2 class="highlight-title">Engenheiro Civil</h2><p class="highlight-description">Salário atrativo + benefícios.</p><a href="#" class="btn btn-primary">Candidatar-se</a></div></div><div class="highlight-slide" style="background:linear-gradient(135deg,rgba(124,58,237,.9),rgba(109,40,217,.8))"><div class="highlight-content"><span class="highlight-badge">EVENTOS</span><h2 class="highlight-title">Festival de Música</h2><p class="highlight-description">Dia 15 de Outubro na Praça Central.</p><a href="#" class="btn btn-primary">Participar</a></div></div><div class="highlight-controls"><div class="highlight-dot active" data-index="0"></div><div class="highlight-dot" data-index="1"></div><div class="highlight-dot" data-index="2"></div></div></div>
+<div class="portal-content active" id="portal-content">
+  <div class="mixed-section">
+    <h3 class="mixed-section-title"><i class="fas fa-home"></i> Imóveis em Destaque</h3>
+    <div class="card-grid">
+      <% (destaques||[]).slice(0,2).forEach(function(p){ %>
+        <div class="card">
+          <div class="card-image"><div class="card-badge"><%= p.status %></div><i class="fas fa-home text-3xl"></i></div>
+          <div class="card-content">
+            <h3 class="card-title"><%= p.title %></h3>
+            <div class="card-meta"><span><i class="fas fa-map-marker-alt mr-1"></i> <%= p.city||'' %></span><span><i class="fas fa-ruler-combined mr-1"></i> <%= p.area||'-' %> m²</span></div>
+            <p class="card-description"><%= p.description %></p>
+            <div class="card-footer"><div class="card-price">R$ <%= p.price %><%= p.status==='Aluguel'?'/mês':'' %></div><div class="card-actions"><a class="btn btn-primary" href="/imoveis/<%= p.id %>">Ver Detalhes</a></div></div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <a href="/imoveis" class="view-all">Ver todos os imóveis →</a>
+  </div>
+
+  <div class="mixed-section">
+    <h3 class="mixed-section-title"><i class="fas fa-briefcase"></i> Vagas em Destaque</h3>
+    <div class="card-grid">
+      <% ((typeof jobs!=='undefined' && jobs) || []).slice(0,2).forEach(function(j){ %>
+        <div class="card">
+          <div class="card-image" style="background-color:#e0f2fe">
+            <div class="card-badge"><%= j.type||'-' %></div>
+            <i class="fas fa-user-tie text-3xl" style="color:#0369a1;"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title"><%= j.title %></h3>
+            <div class="card-meta"><span><i class="fas fa-building mr-1"></i> <%= j.company||'' %></span><span><i class="fas fa-map-marker-alt mr-1"></i> <%= j.city||'' %></span></div>
+            <p class="card-description"><%= j.description||'' %></p>
+            <div class="card-footer"><div class="card-price"><%= j.salary||'A combinar' %></div><div class="card-actions"><a class="btn btn-primary" href="/vagas/<%= j.id %>">Ver Detalhes</a></div></div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <a href="/vagas" class="view-all">Ver todas as vagas →</a>
+  </div>
+
+  <div class="mixed-section">
+    <h3 class="mixed-section-title"><i class="fas fa-calendar-alt"></i> Eventos em Destaque</h3>
+    <div class="card-grid">
+      <% ((typeof events!=='undefined' && events) || []).slice(0,2).forEach(function(e){ %>
+        <div class="card">
+          <div class="card-image" style="background-color:#f3e8ff">
+            <div class="card-badge"><%= e.price||'-' %></div>
+            <i class="fas fa-music text-3xl" style="color:#7e22ce;"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title"><%= e.title %></h3>
+            <div class="card-meta"><span><i class="fas fa-map-marker-alt mr-1"></i> <%= e.local||'' %> - <%= e.city||'' %></span><span><i class="fas fa-calendar mr-1"></i> <%= e.date||'' %></span></div>
+            <p class="card-description"><%= e.description||'' %></p>
+            <div class="card-footer"><div class="card-actions"><a class="btn btn-primary" href="/eventos/<%= e.id %>">Ver Detalhes</a></div></div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <a href="/eventos" class="view-all">Ver todos os eventos →</a>
+  </div>
+
+  <div class="mixed-section">
+    <h3 class="mixed-section-title"><i class="fas fa-concierge-bell"></i> Serviços em Destaque</h3>
+    <div class="card-grid">
+      <% ((typeof services!=='undefined' && services) || []).slice(0,2).forEach(function(s){ %>
+        <div class="card">
+          <div class="card-image" style="background-color:#e0f2fe">
+            <div class="card-badge"><%= s.category||'-' %></div>
+            <i class="fas fa-wrench text-3xl" style="color:#0369a1;"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title"><%= s.title %></h3>
+            <p class="card-description"><%= s.description||'' %></p>
+            <div class="card-footer"><div class="card-actions"><a class="btn btn-primary" href="/servicos/<%= s.id %>">Ver Detalhes</a></div></div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <a href="/servicos" class="view-all">Ver todos os serviços →</a>
+  </div>
+
+  <div class="mixed-section">
+    <h3 class="mixed-section-title"><i class="fas fa-building"></i> Empresas em Destaque</h3>
+    <div class="card-grid">
+      <% ((typeof companies!=='undefined' && companies) || []).slice(0,2).forEach(function(c){ %>
+        <div class="card">
+          <div class="card-image" style="background-color:#dbeafe">
+            <i class="fas fa-store text-3xl" style="color:#1d4ed8;"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title"><%= c.name %></h3>
+            <div class="card-meta"><span><i class="fas fa-map-marker-alt mr-1"></i> <%= c.city||'' %></span><span><i class="fas fa-phone mr-1"></i> <%= c.phone||'' %></span></div>
+            <p class="card-description"><%= c.description||'' %></p>
+            <div class="card-footer"><div class="card-actions"><a class="btn btn-primary" href="/empresas/<%= c.id %>">Ver Detalhes</a></div></div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <a href="/empresas" class="view-all">Ver todas as empresas →</a>
+  </div>
+
+  <div class="mixed-section">
+    <h3 class="mixed-section-title"><i class="fas fa-newspaper"></i> Notícias da Cidade</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-image" style="background-color:#F7EEE9"><i class="fas fa-bullhorn text-3xl" style="color:#86450A;"></i></div>
+        <div class="card-content">
+          <h3 class="card-title">Feira de Produtores Locais</h3>
+          <p class="card-description">Edição especial neste fim de semana com artesanato e gastronomia.</p>
+          <div class="card-footer"><div class="card-actions"><a class="btn btn-primary" href="/noticias">Ler mais</a></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image" style="background-color:#F7EEE9"><i class="fas fa-road text-3xl" style="color:#003602;"></i></div>
+        <div class="card-content">
+          <h3 class="card-title">Obras de Pavimentação</h3>
+          <p class="card-description">Prefeitura anuncia novo cronograma para os bairros centrais.</p>
+          <div class="card-footer"><div class="card-actions"><a class="btn btn-primary" href="/noticias">Ler mais</a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

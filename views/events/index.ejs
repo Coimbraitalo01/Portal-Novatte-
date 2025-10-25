@@ -1,0 +1,27 @@
+<h2 class="section-title"><i class="fas fa-calendar-alt" style="color:#003602"></i> Eventos</h2>
+<form class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4" method="get">
+  <input class="border p-2 rounded" name="q" placeholder="Buscar" value="<%= (filters&&filters.q)||'' %>">
+  <input class="border p-2 rounded" name="city" placeholder="Cidade" value="<%= (filters&&filters.city)||'' %>">
+  <button class="btn btn-primary w-max">Filtrar</button>
+</form>
+<div class="card-grid">
+  <% events.forEach(function(e){ %>
+  <div class="card">
+    <div class="card-image" style="background-color:#f3e8ff">
+      <div class="card-badge"><%= e.price||'-' %></div>
+      <i class="fas fa-music text-3xl" style="color:#7e22ce;"></i>
+    </div>
+    <div class="card-content">
+      <h3 class="card-title"><%= e.title %></h3>
+      <div class="card-meta">
+        <span><i class="fas fa-map-marker-alt mr-1"></i> <%= e.local||'' %> - <%= e.city||'' %></span>
+        <span><i class="fas fa-calendar mr-1"></i> <%= e.date||'' %></span>
+      </div>
+      <p class="card-description"><%= e.description||'' %></p>
+      <div class="card-footer">
+        <div class="card-actions"><a class="btn btn-primary" href="/eventos/<%= e.id %>">Ver Detalhes</a></div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>

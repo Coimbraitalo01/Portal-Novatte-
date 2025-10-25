@@ -1,0 +1,10 @@
+<h2 class="section-title"><i class="fas fa-concierge-bell" style="color:#003602"></i> Admin - Serviços</h2>
+<a class="btn btn-primary mb-3 inline-block" href="/admin/servicos/novo">Novo Serviço</a>
+<table class="w-full text-sm border">
+  <thead class="bg-gray-100"><tr><th class="p-2 text-left">Título</th><th class="p-2">Categoria</th><th class="p-2">Ações</th></tr></thead>
+  <tbody>
+  <% services.forEach(function(s){ %>
+    <tr class="border-t"><td class="p-2"><%= s.title %></td><td class="p-2"><%= s.category||'-' %></td><td class="p-2"><a class="text-blue-600" href="/admin/servicos/<%= s.id %>/editar">Editar</a></td></tr>
+  <% }) %>
+  </tbody>
+</table>

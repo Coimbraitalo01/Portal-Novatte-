@@ -1,0 +1,26 @@
+{
+  "name": "novatte-portal",
+  "version": "1.0.0",
+  "description": "Portal Novatte - Imóveis, Vagas, Eventos e Serviços",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:reset": "node src/db/init.js",
+    "start:3001": "set PORT=3001&& node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "nodemon": "^3.1.0"
+  }
+}

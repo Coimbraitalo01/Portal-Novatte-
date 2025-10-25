@@ -1,0 +1,16 @@
+<h2 class="section-title"><i class="fas fa-concierge-bell" style="color:#003602"></i> <%= service? 'Editar' : 'Novo' %> Serviço</h2>
+<form method="post" enctype="multipart/form-data" action="<%= service?('/admin/servicos/'+service.id):'/admin/servicos' %>" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <input class="border p-2 rounded" name="title" placeholder="Título" value="<%= service?service.title:'' %>" required>
+  <input class="border p-2 rounded" name="category" placeholder="Categoria" value="<%= service?service.category:'' %>">
+  <textarea class="border p-2 rounded md:col-span-2" name="description" rows="4" placeholder="Descrição"><%= service?service.description:'' %></textarea>
+  <div class="md:col-span-2"><label class="block text-sm mb-1">Imagens</label><input type="file" name="images" multiple class="border p-2 rounded w-full"></div>
+  <button class="btn btn-primary w-max md:col-span-2">Salvar</button>
+</form>
+<% if (service && service.images && service.images.length) { %>
+  <h3 class="mixed-section-title mt-6"><i class="fas fa-images"></i> Imagens</h3>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <% service.images.forEach(function(img){ %>
+      <div class="card"><img src="<%= img.url %>" class="w-full h-32 object-cover"><form method="post" action="/servicos/imagens/<%= img.id %>/excluir" class="p-2 text-right"><button class="text-red-600 text-xs">Excluir</button></form></div>
+    <% }) %>
+  </div>
+<% } %>

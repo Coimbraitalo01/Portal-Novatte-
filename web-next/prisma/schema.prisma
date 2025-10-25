@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Property {
+  id          Int      @id @default(autoincrement())
+  title       String
+  price       Float
+  description String?
+  address     String?
+  city        String?
+  area        Float?
+  status      String   @default("Venda")
+  images      PropertyImage[]
+  createdAt   DateTime @default(now())
+}
+
+model PropertyImage {
+  id         Int      @id @default(autoincrement())
+  url        String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId Int
+}

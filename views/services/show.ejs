@@ -1,0 +1,24 @@
+<h2 class="section-title"><i class="fas fa-concierge-bell" style="color:#003602"></i> <%= service.title %></h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <div class="lg:col-span-2">
+    <div class="highlights-carousel" style="height:300px">
+      <% (service.images||[]).forEach(function(img,idx){ %>
+        <div class="highlight-slide <%= idx===0?'active':'' %>" style="background:#e5e7eb">
+          <img src="<%= img.url %>" alt="" class="w-full h-full object-cover">
+        </div>
+      <% }) %>
+      <div class="highlight-controls">
+        <% (service.images||[]).forEach(function(_,idx){ %>
+          <div class="highlight-dot <%= idx===0?'active':'' %>" data-index="<%= idx %>"></div>
+        <% }) %>
+      </div>
+    </div>
+    <p class="mt-4 text-sm text-gray-700"><%= service.description %></p>
+  </div>
+  <div class="space-y-2">
+    <div class="card p-4">
+      <div class="text-sm text-gray-600">Categoria: <%= service.category||'-' %></div>
+      <a href="/contato" class="btn btn-primary mt-3 inline-block">Solicitar Orçamento</a>
+    </div>
+  </div>
+</div>

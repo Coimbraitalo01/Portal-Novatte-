@@ -1,0 +1,15 @@
+<h2 class="section-title"><i class="fas fa-home" style="color:#003602"></i> Todos os Imóveis</h2>
+<form class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-4" method="get">
+  <input class="border p-2 rounded" name="q" placeholder="Buscar" value="<%= (filters&&filters.q)||'' %>">
+  <input class="border p-2 rounded" name="city" placeholder="Cidade" value="<%= (filters&&filters.city)||'' %>">
+  <input class="border p-2 rounded" name="minPrice" placeholder="Preço mín" value="<%= (filters&&filters.minPrice)||'' %>">
+  <input class="border p-2 rounded" name="maxPrice" placeholder="Preço máx" value="<%= (filters&&filters.maxPrice)||'' %>">
+  <select class="border p-2 rounded" name="status"><option value="">Status</option><option <%= (filters&&filters.status)==='Venda'?'selected':'' %>>Venda</option><option <%= (filters&&filters.status)==='Aluguel'?'selected':'' %>>Aluguel</option></select>
+  <button class="btn btn-primary md:col-span-5 w-max">Filtrar</button>
+</form>
+<div class="card-grid">
+  <% properties.forEach(function(p){ %>
+  <div class="card"><div class="card-image"><div class="card-badge"><%= p.status %></div><i class="fas fa-home text-3xl"></i></div>
+    <div class="card-content"><h3 class="card-title"><%= p.title %></h3><div class="card-meta"><span><i class="fas fa-map-marker-alt mr-1"></i> <%= p.city||'' %></span><span><i class="fas fa-ruler-combined mr-1"></i> <%= p.area||'-' %> m²</span></div><p class="card-description"><%= p.description %></p><div class="card-footer"><div class="card-price">R$ <%= p.price %><%= p.status==='Aluguel'?'/mês':'' %></div><div class="card-actions"><a class="btn btn-primary" href="/imoveis/<%= p.id %>">Ver Detalhes</a></div></div></div></div>
+  <% }) %>
+</div>

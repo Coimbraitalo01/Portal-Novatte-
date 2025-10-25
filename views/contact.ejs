@@ -1,0 +1,10 @@
+<h2 class="section-title"><i class="fas fa-envelope" style="color:#003602"></i> Contato</h2>
+<% if (typeof success !== 'undefined' && success) { %>
+  <div class="p-3 bg-green-100 text-green-800 rounded mb-3">Mensagem enviada com sucesso!</div>
+<% } %>
+<form method="post" class="grid gap-3 max-w-xl">
+  <input class="border p-2 rounded" name="name" placeholder="Seu nome" required>
+  <input class="border p-2 rounded" name="email" type="email" placeholder="Seu email" required>
+  <textarea class="border p-2 rounded" name="message" rows="5" placeholder="Mensagem" required></textarea>
+  <button class="btn btn-primary w-max">Enviar</button>
+</form>

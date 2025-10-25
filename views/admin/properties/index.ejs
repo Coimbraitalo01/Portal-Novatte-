@@ -1,0 +1,10 @@
+<h2 class="section-title"><i class="fas fa-building" style="color:#003602"></i> Admin - Imóveis</h2>
+<a class="btn btn-primary mb-3 inline-block" href="/admin/imoveis/novo">Novo Imóvel</a>
+<table class="w-full text-sm border">
+  <thead class="bg-gray-100"><tr><th class="p-2 text-left">Título</th><th class="p-2">Preço</th><th class="p-2">Status</th><th class="p-2">Ações</th></tr></thead>
+  <tbody>
+  <% properties.forEach(function(p){ %>
+    <tr class="border-t"><td class="p-2"><%= p.title %></td><td class="p-2">R$ <%= p.price %></td><td class="p-2"><%= p.status %></td><td class="p-2"><a class="text-blue-600" href="/admin/imoveis/<%= p.id %>/editar">Editar</a></td></tr>
+  <% }) %>
+  </tbody>
+</table>

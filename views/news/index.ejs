@@ -1,0 +1,25 @@
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-6">
+  <h1 class="text-xl font-bold mb-4">Notícias da Cidade</h1>
+  <form method="get" class="mb-4 flex gap-2">
+    <input class="border p-2 rounded w-full" type="text" name="q" value="<%= q||'' %>" placeholder="Buscar notícias" />
+    <input class="border p-2 rounded" type="text" name="city" value="<%= city||'' %>" placeholder="Cidade" />
+    <button class="btn btn-primary" type="submit">Buscar</button>
+  </form>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <% (items||[]).forEach(function(n){ %>
+      <a href="/noticias/<%= n.id %>" class="block card">
+        <div class="card-image" style="background-color:#F7EEE9">
+          <i class="fas fa-newspaper text-3xl" style="color:#86450A"></i>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title"><%= n.title %></h3>
+          <p class="card-description"><%= (n.body||'').slice(0,140) %>...</p>
+          <div class="text-xs opacity-70"><%= n.city||'' %></div>
+        </div>
+      </a>
+    <% }) %>
+  </div>
+  <div class="mt-4 text-sm">
+    Página <%= page %>
+  </div>
+</div>

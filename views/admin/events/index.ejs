@@ -1,0 +1,10 @@
+<h2 class="section-title"><i class="fas fa-calendar-alt" style="color:#003602"></i> Admin - Eventos</h2>
+<a class="btn btn-primary mb-3 inline-block" href="/admin/eventos/novo">Novo Evento</a>
+<table class="w-full text-sm border">
+  <thead class="bg-gray-100"><tr><th class="p-2 text-left">Título</th><th class="p-2">Cidade</th><th class="p-2">Data</th><th class="p-2">Ações</th></tr></thead>
+  <tbody>
+  <% events.forEach(function(e){ %>
+    <tr class="border-t"><td class="p-2"><%= e.title %></td><td class="p-2"><%= e.city||'-' %></td><td class="p-2"><%= e.date||'-' %></td><td class="p-2"><a class="text-blue-600" href="/admin/eventos/<%= e.id %>/editar">Editar</a></td></tr>
+  <% }) %>
+  </tbody>
+</table>

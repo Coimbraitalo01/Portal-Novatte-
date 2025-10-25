@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/public/css/portal.css">
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+  <%- include('partials/header') %>
+  <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6">
+    <%- body %>
+  </main>
+  <%- include('partials/footer') %>
+  <script src="/public/js/main.js"></script>
+</body>
+</html>
