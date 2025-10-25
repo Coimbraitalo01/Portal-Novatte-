@@ -1,12 +1,34 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  reactStrictMode: true,
+  swcMinify: true,
+  // Configuração para GitHub Pages
   basePath: process.env.NODE_ENV === 'production' ? '/Portal-Novatte' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/Portal-Novatte/' : '',
+  
+  // Desativa a otimização de imagens para exportação estática
   images: {
     unoptimized: true,
   },
-  // Adicione outras configurações do Next.js aqui, se necessário
+  
+  // Desativa o webpack 5 (pode ajudar em alguns casos)
+  webpack5: true,
+  
+  // Permite importação de módulos ES
+  experimental: {
+    esmExternals: true,
+  },
+  
+  // Configuração de redirecionamentos (opcional)
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
 }
 
-export default nextConfig
+module.exports = nextConfig

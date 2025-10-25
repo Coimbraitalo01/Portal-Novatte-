@@ -4,12 +4,12 @@
   "description": "Portal Novatte - Imóveis, Vagas, Eventos e Serviços",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export -o out",
     "db:reset": "node src/db/init.js",
-    "start:server": "node server.js",
-    "build": "next build && next export -o out",
-    "export": "next build && next export -o out"
+    "start:server": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -21,7 +21,8 @@
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "styled-jsx": "^5.1.1"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
